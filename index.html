@@ -1197,7 +1197,8 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
     .tooltip-box {
       visibility: hidden;
       opacity: 0;
-      width: 280px;
+      width: min(280px, calc(100vw - 32px));
+      box-sizing: border-box;
       background-color: var(--brand-deep);
       color: #FFFFFF;
       text-align: left;
@@ -1206,8 +1207,8 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
       position: absolute;
       z-index: 50;
       bottom: 125%;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
+      transform: translateX(var(--tooltip-shift, 0px));
       box-shadow: 0 8px 24px rgba(0,0,0,0.2);
       font-size: 0.8rem;
       line-height: 1.4;
@@ -1218,7 +1219,7 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
       content: "";
       position: absolute;
       top: 100%;
-      left: 50%;
+      left: var(--tooltip-arrow, 24px);
       margin-left: -6px;
       border-width: 6px;
       border-style: solid;
@@ -2169,77 +2170,68 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
                 <span class="badge" data-variant="outline" id="flow-status-badge">Consistente</span>
               </div>
 
-              <!-- Nível 1: Identificação -->
-              <div class="shell-grid" style="grid-template-columns: 1fr 1fr; gap: 12px;">
-                <div class="flow-step-box primary">
-                  <div class="text-xs muted font-semibold">IDENTIFICAÇÃO EM BASES</div>
-                  <div style="font-size: 1.15rem; font-weight: 700; color: var(--brand-deep);" id="flow-v-bases">1.250</div>
-                  <div class="text-xs text-muted">Bases de dados indexadas</div>
-                </div>
-                <div class="flow-step-box primary">
-                  <div class="text-xs muted font-semibold">OUTRAS FONTES / CINZENTA</div>
-                  <div style="font-size: 1.15rem; font-weight: 700; color: var(--brand-deep);" id="flow-v-outras">45</div>
-                  <div class="text-xs text-muted">Teses, relatórios, busca manual</div>
-                </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+                <button type="button" class="btn" data-export-prisma="png">Exportar PNG</button>
+                <button type="button" class="btn" data-export-prisma="jpeg">Exportar JPEG</button>
               </div>
-
-              <div class="flow-arrow-down">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-              </div>
-
-              <!-- Nível 2: Remoção de duplicatas -->
-              <div class="shell-grid" style="grid-template-columns: 1.4fr 1fr; gap: 12px;">
-                <div class="flow-step-box">
-                  <div class="text-xs muted font-semibold">REGISTROS IDENTIFICADOS TOTAIS</div>
-                  <div style="font-size: 1.15rem; font-weight: 700; color: #154D74;" id="flow-v-total-ident">1.295</div>
-                </div>
-                <div class="flow-step-box excluded">
-                  <div class="text-xs text-danger font-semibold">DUPLICATAS REMOVIDAS</div>
-                  <div style="font-size: 1.15rem; font-weight: 700; color: #BA3E2E;" id="flow-v-dup">- 380</div>
-                </div>
-              </div>
-
-              <div class="flow-arrow-down">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-              </div>
-
-              <!-- Nível 3: Triagem de Título e Resumo -->
-              <div class="shell-grid" style="grid-template-columns: 1.4fr 1fr; gap: 12px;">
-                <div class="flow-step-box primary">
-                  <div class="text-xs muted font-semibold">REGISTROS TRIADOS (TÍTULO/RESUMO)</div>
-                  <div style="font-size: 1.15rem; font-weight: 700; color: var(--brand-deep);" id="flow-v-triados">915</div>
-                </div>
-                <div class="flow-step-box excluded">
-                  <div class="text-xs text-danger font-semibold">EXCLUÍDOS POR TÍTULO/RESUMO</div>
-                  <div style="font-size: 1.15rem; font-weight: 700; color: #BA3E2E;" id="flow-v-exc-triagem">- 795</div>
-                </div>
-              </div>
-
-              <div class="flow-arrow-down">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-              </div>
-
-              <!-- Nível 4: Leitura de Texto Completo -->
-              <div class="shell-grid" style="grid-template-columns: 1.4fr 1fr; gap: 12px;">
-                <div class="flow-step-box accent">
-                  <div class="text-xs muted font-semibold">RELATÓRIOS AVALIADOS NA ÍNTEGRA</div>
-                  <div style="font-size: 1.15rem; font-weight: 700; color: var(--brand-teal);" id="flow-v-recup">120</div>
-                </div>
-                <div class="flow-step-box excluded">
-                  <div class="text-xs text-danger font-semibold">EXCLUÍDOS COM JUSTIFICATIVA</div>
-                  <div style="font-size: 1.15rem; font-weight: 700; color: #BA3E2E;" id="flow-v-exc-leitura">- 88</div>
-                </div>
-              </div>
-
-              <div class="flow-arrow-down">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-              </div>
-
-              <!-- Nível 5: Incluídos Finais -->
-              <div class="flow-step-box" style="border-left: 6px solid #166B60; background: #EBF7F5; text-align: center; padding: 18px;">
-                <div class="text-xs font-semibold" style="color: #166B60; text-transform: uppercase; letter-spacing: 0.5px;">ESTUDOS INCLUÍDOS NA REVISÃO FINAL</div>
-                <div style="font-size: 2rem; font-weight: 800; color: #166B60;" id="flow-v-incluidos">32</div>
-                <div class="text-xs muted">Sintetizados descritivamente e mapeados nas categorias do escopo</div>
+              <p class="text-xs muted">Modelo adaptado ao simulador: bases e outras fontes são agrupadas. Relatórios não recuperados são calculados pela diferença entre os buscados e os avaliados. Na pesquisa, discrimine os motivos de exclusão e confira a correspondência entre relatórios e estudos.</p>
+              <div style="overflow-x:auto; padding:8px; border:1px solid #dce6ef; border-radius:8px; background:white;">
+<svg id="prisma-figure" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1100" width="1000" height="1100" role="img" aria-label="Fluxograma de seleção PRISMA adaptado" style="display:block;width:100%;height:auto;min-width:650px;background:white">
+<defs><marker id="prisma-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="black"/></marker></defs>
+<rect width="1000" height="1100" fill="white"/>
+<text x="500" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#111">Identificação e seleção das fontes de evidência</text>
+<rect x="20" y="65" width="48" height="230" rx="5" fill="#dce6ef"/>
+<text transform="translate(50,180.0) rotate(-90)" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#111">Identificação</text>
+<rect x="20" y="320" width="48" height="575" rx="5" fill="#dce6ef"/>
+<text transform="translate(50,607.5) rotate(-90)" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#111">Triagem</text>
+<rect x="20" y="920" width="48" height="100" rx="5" fill="#dce6ef"/>
+<text transform="translate(50,970.0) rotate(-90)" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#111">Inclusão</text>
+<rect x="100" y="65" width="850" height="48" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="525.0" y="95.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Identificação por bases de dados e outras fontes</text>
+<rect x="100" y="140" width="400" height="130" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="300.0" y="175.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Registros identificados:</text>
+<text x="300.0" y="199.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Bases de dados: <tspan id="flow-v-bases">1.250</tspan></text>
+<text x="300.0" y="223.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Outras fontes: <tspan id="flow-v-outras">45</tspan></text>
+<text x="300.0" y="247.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-total-ident">1.295</tspan>)</text>
+<rect x="600" y="150" width="350" height="110" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="775.0" y="187.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Registros removidos</text>
+<text x="775.0" y="211.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">antes da triagem: duplicatas</text>
+<text x="775.0" y="235.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-dup">380</tspan>)</text>
+<path d="M500,205 L600,205" fill="none" stroke="#111" stroke-width="1.6" marker-end="url(#prisma-arrow)"/>
+<path d="M300,270 L300,330" fill="none" stroke="#111" stroke-width="1.6" marker-end="url(#prisma-arrow)"/>
+<rect x="100" y="330" width="400" height="85" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="300.0" y="366.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Registros triados (título/resumo)</text>
+<text x="300.0" y="390.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-triados">915</tspan>)</text>
+<rect x="600" y="330" width="350" height="85" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="775.0" y="366.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Registros excluídos</text>
+<text x="775.0" y="390.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-exc-triagem">795</tspan>)</text>
+<path d="M500,372 L600,372" fill="none" stroke="#111" stroke-width="1.6" marker-end="url(#prisma-arrow)"/>
+<path d="M300,415 L300,485" fill="none" stroke="#111" stroke-width="1.6" marker-end="url(#prisma-arrow)"/>
+<rect x="100" y="485" width="400" height="85" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="300.0" y="521.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Relatórios buscados para recuperação</text>
+<text x="300.0" y="545.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-buscados">120</tspan>)</text>
+<rect x="600" y="485" width="350" height="85" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="775.0" y="521.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Relatórios não recuperados</text>
+<text x="775.0" y="545.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-nao-recup">0</tspan>)</text>
+<path d="M500,527 L600,527" fill="none" stroke="#111" stroke-width="1.6" marker-end="url(#prisma-arrow)"/>
+<path d="M300,570 L300,650" fill="none" stroke="#111" stroke-width="1.6" marker-end="url(#prisma-arrow)"/>
+<rect x="100" y="650" width="400" height="110" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="300.0" y="687.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Relatórios avaliados</text>
+<text x="300.0" y="711.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">quanto à elegibilidade</text>
+<text x="300.0" y="735.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-recup">120</tspan>)</text>
+<rect x="600" y="650" width="350" height="150" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="775.0" y="695.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Relatórios excluídos</text>
+<text x="775.0" y="719.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">após leitura integral</text>
+<text x="775.0" y="743.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">(motivos a discriminar no estudo)</text>
+<text x="775.0" y="767.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-exc-leitura">88</tspan>)</text>
+<path d="M500,705 L600,705" fill="none" stroke="#111" stroke-width="1.6" marker-end="url(#prisma-arrow)"/>
+<path d="M300,760 L300,925" fill="none" stroke="#111" stroke-width="1.6" marker-end="url(#prisma-arrow)"/>
+<rect x="100" y="925" width="400" height="90" rx="7" fill="white" stroke="#111" stroke-width="1.5"/>
+<text x="300.0" y="964.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="normal" fill="#111">Fontes de evidência incluídas</text>
+<text x="300.0" y="988.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-incluidos">32</tspan>)</text>
+<text x="500" y="1050" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="normal" fill="#111">Fonte: Simulador de Revisão de Escopo de Silva (2026) adaptado a partir de</text>
+<text x="500" y="1074" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="#111">Page et al. (2021). PRISMA 2020. https://doi.org/10.1136/bmj.n71.</text>
+</svg>
               </div>
             </div>
           </div>
@@ -2463,7 +2455,8 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
       </section>
 
       <section id="referencias" class="shell-section" style="padding-top: 20px; overflow-wrap: anywhere;">
-        <h2 class="section-title">Referências</h2>
+        <details class="step-card">
+          <summary class="step-header"><span class="section-title" style="margin:0;">Referências</span><span aria-hidden="true">▾</span></summary>
         <div class="step-body">
           <p id="ref-arksey" style="margin: 0 0 18px;">ARKSEY, Hilary; O’MALLEY, Lisa. Scoping studies: towards a methodological framework. <strong>International Journal of Social Research Methodology</strong>, v. 8, n. 1, p. 19-32, 2005. DOI: 10.1080/1364557032000119616. Disponível em: <a href="https://doi.org/10.1080/1364557032000119616" target="_blank" rel="noopener">https://doi.org/10.1080/1364557032000119616</a>. Acesso em: 24 out. 2026.</p>
           <p id="ref-aromataris" style="margin: 0 0 18px;">AROMATARIS, Edoardo; LOCKWOOD, Craig; PORRITT, Kylie; PILLA, Bianca; JORDAN, Zoe (ed.). <strong>JBI Manual for Evidence Synthesis</strong>. [S. l.]: JBI, 2024. DOI: 10.46658/JBIMES-24-01. Disponível em: <a href="https://doi.org/10.46658/JBIMES-24-01" target="_blank" rel="noopener">https://doi.org/10.46658/JBIMES-24-01</a>. Acesso em: 24 out. 2026.</p>
@@ -2475,6 +2468,7 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
           <p id="ref-tricco2018" style="margin: 0 0 18px;">TRICCO, Andrea C. et al. PRISMA Extension for Scoping Reviews (PRISMA-ScR): checklist and explanation. <strong>Annals of Internal Medicine</strong>, v. 169, n. 7, p. 467-473, 2018. DOI: 10.7326/M18-0850. Disponível em: <a href="https://doi.org/10.7326/M18-0850" target="_blank" rel="noopener">https://doi.org/10.7326/M18-0850</a>. Acesso em: 24 out. 2026.</p>
           <p id="ref-tricco2026" style="margin: 0 0 18px;">TRICCO, Andrea C. et al. Updating the PRISMA reporting guideline for scoping reviews: a scoping review. <strong>Journal of Clinical Epidemiology</strong>, v. 196, 112314, 2026. DOI: 10.1016/j.jclinepi.2026.112314. Disponível em: <a href="https://doi.org/10.1016/j.jclinepi.2026.112314" target="_blank" rel="noopener">https://doi.org/10.1016/j.jclinepi.2026.112314</a>. Acesso em: 24 out. 2026.</p>
         </div>
+        </details>
       </section>
 
     </div>
@@ -2778,15 +2772,18 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
           { label: "Estudos Incluídos", value: Math.max(0, finalIncluidos), format: "num", hint: "Síntese final" }
         ]);
 
+        document.getElementById('flow-v-buscados').textContent = window.skipShell.fmt.num(Math.max(0, calculoTriadosElegiveis));
+        document.getElementById('flow-v-nao-recup').textContent = window.skipShell.fmt.num(Math.max(0, calculoTriadosElegiveis - vRecup));
+        document.querySelectorAll('[data-export-prisma]').forEach(button => { button.disabled = erros.length > 0; });
         // Atualiza números do fluxograma
         flowBases.textContent = window.skipShell.fmt.num(vBases);
         flowOutras.textContent = window.skipShell.fmt.num(vOutras);
         flowTotalIdent.textContent = window.skipShell.fmt.num(totalIdentificados);
-        flowDup.textContent = "- " + window.skipShell.fmt.num(vDup);
+        flowDup.textContent = window.skipShell.fmt.num(vDup);
         flowTriados.textContent = window.skipShell.fmt.num(Math.max(0, totalAposDuplicatas));
-        flowExcTriagem.textContent = "- " + window.skipShell.fmt.num(vExcTriagem);
+        flowExcTriagem.textContent = window.skipShell.fmt.num(vExcTriagem);
         flowRecup.textContent = window.skipShell.fmt.num(vRecup);
-        flowExcLeitura.textContent = "- " + window.skipShell.fmt.num(vExcLeitura);
+        flowExcLeitura.textContent = window.skipShell.fmt.num(vExcLeitura);
         flowIncluidos.textContent = window.skipShell.fmt.num(Math.max(0, finalIncluidos));
       }
 
@@ -2973,5 +2970,58 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
       }
     });
   </script>
+
+<script>
+// Keep explanatory hints inside the viewport, including the first PCC card.
+(function () {
+  function place(wrapper) {
+    const box = wrapper.querySelector('.tooltip-box');
+    if (!box) return;
+    box.style.setProperty('--tooltip-shift', '0px');
+    const rect = box.getBoundingClientRect();
+    const shift = Math.max(16 - rect.left, Math.min(0, document.documentElement.clientWidth - 16 - rect.right));
+    box.style.setProperty('--tooltip-shift', shift + 'px');
+    const trigger = wrapper.getBoundingClientRect();
+    const arrow = Math.max(12, Math.min(rect.width - 12, trigger.left + Math.min(trigger.width / 2, 40) - rect.left - shift));
+    box.style.setProperty('--tooltip-arrow', arrow + 'px');
+  }
+  const wrappers = document.querySelectorAll('.tooltip-wrapper');
+  wrappers.forEach(function (wrapper) {
+    wrapper.addEventListener('mouseenter', function () { place(wrapper); });
+    wrapper.addEventListener('focusin', function () { place(wrapper); });
+    wrapper.addEventListener('touchstart', function () { place(wrapper); }, {passive: true});
+  });
+  window.addEventListener('resize', function () { wrappers.forEach(place); });
+})();
+</script>
+
+<script>
+document.addEventListener('click', async function (event) {
+  const button = event.target.closest('[data-export-prisma]');
+  if (!button) return;
+  const status = document.getElementById('prisma-alert');
+  if (status && status.style.display !== 'none') {
+    window.skipUI.toast('Corrija os valores inconsistentes antes de exportar.', {type:'error'});
+    return;
+  }
+  const svg = document.querySelector('.flowchart-wrapper #prisma-figure').cloneNode(true);
+  svg.removeAttribute('style'); svg.setAttribute('width','1000'); svg.setAttribute('height','1100');
+  const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(svg)], {type:'image/svg+xml;charset=utf-8'}));
+  button.disabled = true;
+  try {
+    const image = new Image();
+    await new Promise((resolve,reject) => { image.onload=resolve; image.onerror=reject; image.src=url; });
+    const canvas = document.createElement('canvas'); canvas.width=2000; canvas.height=2200;
+    const ctx=canvas.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,2000,2200); ctx.drawImage(image,0,0,2000,2200);
+    const format=button.dataset.exportPrisma;
+    const blob=await new Promise(resolve=>canvas.toBlob(resolve,format==='jpeg'?'image/jpeg':'image/png',0.95));
+    if (!blob) throw new Error('Falha na imagem');
+    const download=URL.createObjectURL(blob); const link=document.createElement('a');
+    link.href=download; link.download='fluxograma-prisma.'+(format==='jpeg'?'jpg':'png'); document.body.appendChild(link); link.click(); link.remove();
+    setTimeout(()=>URL.revokeObjectURL(download),10000);
+  } catch(error) { window.skipUI.toast('Não foi possível exportar a figura. Tente novamente.',{type:'error'}); }
+  finally { URL.revokeObjectURL(url); button.disabled=false; }
+});
+</script>
 </body>
 </html>
