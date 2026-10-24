@@ -2176,7 +2176,7 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
               </div>
               <p class="text-xs muted">Modelo adaptado ao simulador: bases e outras fontes são agrupadas. Relatórios não recuperados são calculados pela diferença entre os buscados e os avaliados. Na pesquisa, discrimine os motivos de exclusão e confira a correspondência entre relatórios e estudos.</p>
               <div style="overflow-x:auto; padding:8px; border:1px solid #dce6ef; border-radius:8px; background:white;">
-<svg id="prisma-figure" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1100" width="1000" height="1100" role="img" aria-label="Fluxograma de seleção PRISMA adaptado" style="display:block;width:100%;height:auto;min-width:650px;background:white">
+<svg id="prisma-figure" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1180" width="1000" height="1180" role="img" aria-label="Fluxograma de seleção PRISMA adaptado" style="display:block;width:100%;height:auto;min-width:650px;background:white">
 <defs><marker id="prisma-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="black"/></marker></defs>
 <rect width="1000" height="1100" fill="white"/>
 <text x="500" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#111">Identificação e seleção das fontes de evidência</text>
@@ -2231,6 +2231,9 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
 <text x="300.0" y="988.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="#111">(n = <tspan id="flow-v-incluidos">32</tspan>)</text>
 <text x="500" y="1050" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="normal" fill="#111">Fonte: Simulador de Revisão de Escopo de Silva (2026) adaptado a partir de</text>
 <text x="500" y="1074" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="#111">Page et al. (2021). PRISMA 2020. https://doi.org/10.1136/bmj.n71.</text>
+<text x="500" y="1101" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#111">Modelo original: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/</text>
+<text x="500" y="1123" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#111">Contribuições autorais: © Silva, 2026. Reprodução isolada desta figura autorizada</text>
+<text x="500" y="1145" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#111">para fins acadêmicos e científicos não comerciais, mantendo a fonte e estes avisos.</text>
 </svg>
               </div>
             </div>
@@ -2511,7 +2514,19 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
         <div>
           <h4 style="color: #FFFFFF; font-size: 0.98rem; margin-top: 0; margin-bottom: 10px;">Direitos de Uso</h4>
           <p style="color: #C0D6E7; font-size: 0.85rem; line-height: 1.5; margin: 0;">
-            Material didático-científico. Reprodução permitida com créditos de autoria, mediante citação da fonte.
+            © 2026 Andréa Soares Rocha da Silva. Autorização própria de uso, aplicável às contribuições autorais deste recurso.
+          </p>
+          <details style="margin-top:10px; color:#C0D6E7; font-size:0.85rem; line-height:1.6;">
+            <summary style="cursor:pointer; color:#FFFFFF;">Consultar condições de uso</summary>
+            <p><strong>Usos autorizados:</strong> acesso, utilização educacional e científica sem finalidade comercial e compartilhamento integral do infográfico, sem alterações, mantendo autoria, referências, créditos e esta declaração.</p>
+            <p><strong>Figura gerada pelo simulador:</strong> é expressamente permitida a exportação e a reprodução isolada do fluxograma, com os dados da própria pesquisa ou atividade, em trabalhos acadêmicos, aulas, apresentações e publicações científicas, sem finalidade comercial por parte de quem utiliza o recurso. Devem ser mantidos a fonte e os avisos de direitos da figura. O preenchimento dos campos e a geração da figura pelas funções do simulador são usos autorizados.</p>
+            <p><strong>Usos que dependem de autorização prévia:</strong> exploração comercial das contribuições autorais, distribuição de versões modificadas, reutilização do código autoral e reprodução parcial de textos, telas ou outros elementos autorais, salvo a figura expressamente autorizada acima e as utilizações permitidas por lei.</p>
+            <p><strong>Direitos de terceiros:</strong> referências, documentos vinculados, componentes de terceiros e materiais incorporados conservam seus direitos e licenças próprios. Esta autorização não concede exclusividade sobre métodos, ideias, fatos ou dados nem restringe permissões concedidas pelos titulares originais.</p>
+            <p><strong>PRISMA 2020:</strong> o modelo original do fluxograma, de Page et al. (2021), está sob <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank" rel="noopener" style="color:#FFFFFF; text-decoration:underline;">CC BY 4.0</a>. A figura deste simulador é uma adaptação didática, com fontes agrupadas e campos calculados. As permissões da licença original, inclusive o uso comercial do material original com atribuição, permanecem preservadas; as restrições desta declaração alcançam apenas as contribuições autorais próprias.</p>
+            <p><strong>Limitações legais:</strong> permanecem resguardadas as citações e demais utilizações autorizadas pela legislação aplicável. Esta declaração não corresponde a uma licença Creative Commons do infográfico como um todo.</p>
+          </details>
+          <p style="color:#C0D6E7; font-size:0.85rem; line-height:1.5; margin:10px 0 0;">
+            Uso comercial e demais usos não autorizados nesta declaração dependem de autorização da titular dos direitos correspondentes.
           </p>
         </div>
 
@@ -3005,14 +3020,14 @@ document.addEventListener('click', async function (event) {
     return;
   }
   const svg = document.querySelector('.flowchart-wrapper #prisma-figure').cloneNode(true);
-  svg.removeAttribute('style'); svg.setAttribute('width','1000'); svg.setAttribute('height','1100');
+  svg.removeAttribute('style'); svg.setAttribute('width','1000'); svg.setAttribute('height','1180');
   const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(svg)], {type:'image/svg+xml;charset=utf-8'}));
   button.disabled = true;
   try {
     const image = new Image();
     await new Promise((resolve,reject) => { image.onload=resolve; image.onerror=reject; image.src=url; });
-    const canvas = document.createElement('canvas'); canvas.width=2000; canvas.height=2200;
-    const ctx=canvas.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,2000,2200); ctx.drawImage(image,0,0,2000,2200);
+    const canvas = document.createElement('canvas'); canvas.width=2000; canvas.height=2360;
+    const ctx=canvas.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,2000,2360); ctx.drawImage(image,0,0,2000,2360);
     const format=button.dataset.exportPrisma;
     const blob=await new Promise(resolve=>canvas.toBlob(resolve,format==='jpeg'?'image/jpeg':'image/png',0.95));
     if (!blob) throw new Error('Falha na imagem');
