@@ -324,6 +324,15 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
       .hero-title-row .research-logos { order:-1; padding:10px 14px; gap:14px; }
       .research-logos img { width:82px; height:82px; }
     }
+
+    #metodologia > details > summary .section-title,
+    #referencias > details > summary .section-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1.3;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
 </style>
   <script>
 /* Skip artifact shell — fixed helpers served beside every artifact. */
@@ -2423,16 +2432,17 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
 
       <!-- SEÇÃO 6: Nota Metodológica -->
       <section id="metodologia" class="shell-section" style="padding-top: 20px;">
-        <h2 class="section-title">Nota Metodológica &amp; Normas Vigentes</h2>
+        <details class="step-card">
+          <summary class="step-header"><span class="section-title" style="margin:0;">Nota Metodológica &amp; Normas Vigentes</span><span aria-hidden="true">▾</span></summary>
         <div class="accordion">
-          <details class="step-card" open>
-            <summary class="step-header">
+          <div class="step-card">
+            <div class="step-header">
               <div class="step-title-wrap">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
                 <strong style="color: var(--brand-deep); font-size: 0.95rem;">Diretrizes Vigentes, Padrão de Relato e Avaliação de Risco de Viés</strong>
               </div>
               <svg class="step-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </summary>
+            </div>
             <div class="step-body" style="padding: 18px 20px;">
               <p>Ao conduzir e relatar uma revisão de escopo, observe as seguintes convenções acadêmicas e metodológicas internacionais:</p>
               <ul>
@@ -2443,8 +2453,9 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
                 <li><strong>Avaliação de risco de viés / qualidade metodológica:</strong> Diferente de uma revisão sistemática de efetividade, a avaliação crítica individual de viés dos estudos é <strong>opcional</strong> em revisões de escopo. Deve ser conduzida apenas se houver perfeita aderência aos objetivos da pesquisa e uma justificativa explícita no protocolo inicial. <span data-reference-call="true">(Aromataris et al., 2024; Peters et al., 2020).</span></li>
               </ul>
             </div>
-          </details>
+          </div>
         </div>
+        </details>
       </section>
 
       <section id="referencias" class="shell-section" style="padding-top: 20px; overflow-wrap: anywhere;">
