@@ -2006,7 +2006,7 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
             <div><strong>C (Contexto):</strong> Instituições de ensino superior públicas latino-americanas</div>
           </div>
           <div style="font-size: 0.9rem; border-top: 1px solid #D9E4EC; padding-top: 8px;">
-            <strong>Pergunta formulada:</strong> <em>"Qual é o escopo da literatura sobre as estratégias de prevenção da síndrome de burnout em estudantes de pós-graduação stricto sensu no contexto das instituições de ensino superior públicas latino-americanas?"</em>
+            <strong>Pergunta formulada:</strong> <em>"Mapear as evidências científicas sobre as estratégias de prevenção da síndrome de burnout em estudantes de pós-graduação stricto sensu no contexto das instituições de ensino superior públicas latino-americanas?"</em>
           </div>
         </div>
               <p class="section-desc" data-reference-call="true">Fontes: (Aromataris et al., 2024; Peters et al., 2020).</p>
@@ -2078,7 +2078,7 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
                 </button>
               </div>
               <p id="texto-pergunta-gerada" style="font-size: 1.05rem; font-weight: 500; color: #10344F; margin: 0; line-height: 1.5;">
-                "Qual é o escopo da literatura sobre estratégias de enfrentamento ao estresse ocupacional em profissionais de enfermagem, no contexto de unidades de terapia intensiva pediátricas?"
+                "Mapear as evidências científicas sobre estratégias de enfrentamento ao estresse ocupacional em profissionais de enfermagem, no contexto de unidades de terapia intensiva pediátricas?"
               </p>
             </div>
           </div>
@@ -2622,7 +2622,7 @@ table.shell-table td.skip-table-empty { color: var(--text-muted); text-align: ce
         const con = (inputQCon.value.trim() || "[Conceito]");
         const ctx = (inputQCtx.value.trim() || "[Contexto]");
 
-        const frase = `Qual é o escopo da literatura sobre ${con} em ${pop}, no contexto de ${ctx}?`;
+        const frase = `Mapear as evidências científicas sobre ${con} em ${pop}, no contexto de ${ctx}?`;
         textoPergunta.textContent = `"${frase}"`;
       }
 
@@ -3039,10 +3039,5 @@ document.addEventListener('click', async function (event) {
   finally { URL.revokeObjectURL(url); button.disabled=false; }
 });
 </script>
-<script>
-document.addEventListener('contextmenu', function (event) {
-    event.preventDefault();
-});
-</script>  
 </body>
 </html>
