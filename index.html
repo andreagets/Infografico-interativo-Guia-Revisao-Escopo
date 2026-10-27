@@ -3039,5 +3039,10 @@ document.addEventListener('click', async function (event) {
   finally { URL.revokeObjectURL(url); button.disabled=false; }
 });
 </script>
+<script>
+document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+});
+</script>  
 </body>
 </html>
